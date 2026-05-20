@@ -13,6 +13,8 @@ services:
     build: .
     container_name: flag_football_api_staging
     restart: always
+    env_file:
+      - .env
     environment:
       - FLASK_ENV=staging
       - DATABASE_URL=mysql+pymysql://root:staging_secure_password@db/flag_football_staging
