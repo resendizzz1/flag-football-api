@@ -49,6 +49,6 @@ jobs:
           username: ${{ secrets.AWS_EC2_USER }}
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            cd /home/ubuntu/flag-football-api
+            cd /home/ec2-user/flag-football-api
             git pull origin main
             docker-compose -f docker-compose.staging.yml up -d --build
