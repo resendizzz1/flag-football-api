@@ -19,6 +19,8 @@ def create_app():
     with app.app_context():
         db.create_all()
 
+    from src.routes.videos import videos_bp
+    app.register_blueprint(videos_bp)
     return app
 
 if __name__ == '__main__':

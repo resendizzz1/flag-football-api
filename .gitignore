@@ -2,4 +2,4 @@ pycache/
 *.pyc
 .env
 venv/
-.vscode/
+.vscode/flag-app.pem
