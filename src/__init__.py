@@ -1,28 +1,22 @@
 from flask import Flask
-from src.config import Config
 from src.models.models import db
+from src.routes.videos import videos_bp
+from src.routes.auth import auth_bp
+from src.routes.equipos import equipos_bp
+import os
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///flag_football.db')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
-
-    from src.routes.team_routes import team_bp
-    from src.routes.stats_routes import stats_bp
-    from src.routes.auth_routes import auth_bp
-    
-    app.register_blueprint(team_bp, url_prefix='/api')
-    app.register_blueprint(stats_bp, url_prefix='/api')
-    app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
     with app.app_context():
         db.create_all()
 
-    from src.routes.videos import videos_bp
     app.register_blueprint(videos_bp)
-    return app
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(equipos_bp)
 
-if __name__ == '__main__':
-    app = create_app()
-    app.run(host='0.0.0.0', port=5000)
+    return app
