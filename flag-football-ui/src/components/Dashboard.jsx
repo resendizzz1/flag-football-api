@@ -54,7 +54,7 @@ function Dashboard() {
               </thead>
               <tbody>
                 <tr className="category-row">
-                  <td colSpan="12">VARONIL GOLDEN</td>
+                  <td colSpan="12">VARONIL</td>
                 </tr>
                 
                 {equipos.length > 0 ? (
