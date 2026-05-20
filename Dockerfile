@@ -11,4 +11,4 @@ ENV PYTHONPATH=/app
 
 EXPOSE 5000
 
-CMD ["python", "src/__init__.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "src.__init__:create_app()"]
