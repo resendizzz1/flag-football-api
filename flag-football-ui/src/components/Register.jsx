@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import './Login.css';
 
 function Register({ setView }) {
   const [formData, setFormData] = useState({ nombre: '', email: '', password: '', rol: 'coach' });
   const [mensaje, setMensaje] = useState({ texto: '', tipo: '' });
 
-  const handleRegister = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMensaje({ texto: '', tipo: '' });
 
@@ -19,7 +18,7 @@ function Register({ setView }) {
       const data = await response.json();
       
       if (response.ok) {
-        setMensaje({ texto: 'Cuenta creada. Espera autorización del Administrador.', tipo: 'success' });
+        setMensaje({ texto: 'Registro exitoso. Espera autorización.', tipo: 'success' });
         setTimeout(() => setView('login'), 3000);
       } else {
         setMensaje({ texto: data.error || 'Error al registrar', tipo: 'error' });
@@ -30,62 +29,55 @@ function Register({ setView }) {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <div className="login-header">
-          <h2 className="login-title">Crear Cuenta</h2>
-          <p className="login-subtitle">Regístrate en la plataforma</p>
-        </div>
-
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Crear Cuenta</h2>
+        
         {mensaje.texto && (
-          <div className={`mb-4 p-3 rounded text-sm ${mensaje.tipo === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
+          <div className={`mb-4 p-3 rounded ${mensaje.tipo === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`}>
             {mensaje.texto}
           </div>
         )}
 
-        <form onSubmit={handleRegister}>
-          <div className="form-group">
-            <label className="form-label">Nombre Completo</label>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">Nombre</label>
             <input 
-              type="text" 
-              className="form-input" 
-              required 
+              type="text" required className="w-full p-2 border rounded"
               onChange={(e) => setFormData({...formData, nombre: e.target.value})}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Correo Electrónico</label>
+          <div>
+            <label className="block text-sm font-medium mb-1">Email</label>
             <input 
-              type="email" 
-              className="form-input" 
-              required 
+              type="email" required className="w-full p-2 border rounded"
               onChange={(e) => setFormData({...formData, email: e.target.value})}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Contraseña</label>
+          <div>
+            <label className="block text-sm font-medium mb-1">Contraseña</label>
             <input 
-              type="password" 
-              className="form-input" 
-              required 
+              type="password" required className="w-full p-2 border rounded"
               onChange={(e) => setFormData({...formData, password: e.target.value})}
             />
           </div>
-          <div className="form-group">
-            <label className="form-label">Rol Solicitado</label>
+          <div>
+            <label className="block text-sm font-medium mb-1">Rol</label>
             <select 
-              className="form-input" 
-              value={formData.rol} 
+              className="w-full p-2 border rounded" value={formData.rol}
               onChange={(e) => setFormData({...formData, rol: e.target.value})}
             >
               <option value="coach">Coach / Jugador</option>
+              <option value="developer">Desarrollador</option>
               <option value="admin">Administrador de Liga</option>
             </select>
           </div>
-          <button type="submit" className="btn-submit">Registrarse</button>
+          <button type="submit" className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+            Registrarse
+          </button>
         </form>
-        <button onClick={() => setView('login')} className="btn-back mt-2">
-          Ya tengo cuenta. Iniciar sesión
+        <button onClick={() => setView('login')} className="w-full mt-4 text-blue-600 hover:underline">
+          ¿Ya tienes cuenta? Inicia sesión
         </button>
       </div>
     </div>
