@@ -42,5 +42,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Deploy to Entorno de transferencia
-        run: echo "Iniciando proceso hacia el entorno de transferencia..."
+      - name: Actualizar Entorno de transferencia en AWS EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ${{ secrets.AWS_EC2_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/flag-football-api
+            git pull origin main
+            docker-compose -f docker-compose.staging.yml up -d --build
