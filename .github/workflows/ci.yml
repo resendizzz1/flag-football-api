@@ -33,3 +33,14 @@ jobs:
           SECRET_KEY: test_secret
         run: |
           pytest tests/
+
+  transferencia:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Entorno de transferencia
+        run: echo "Iniciando proceso hacia el entorno de transferencia..."

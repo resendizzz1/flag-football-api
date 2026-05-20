@@ -1,0 +1,27 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: flag_football_db_staging
+    restart: always
+    environment:
+      MYSQL_DATABASE: flag_football_staging
+      MYSQL_ROOT_PASSWORD: staging_secure_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_staging_data:/var/lib/mysql
+
+  web:
+    build: .
+    container_name: flag_football_api_staging
+    restart: always
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=staging
+      - DATABASE_URL=mysql+pymysql://root:staging_secure_password@db/flag_football_staging
+    depends_on:
+      - db
+
+volumes:
+  mysql_staging_data:
