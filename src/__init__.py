@@ -10,9 +10,11 @@ def create_app():
 
     from src.routes.team_routes import team_bp
     from src.routes.stats_routes import stats_bp
+    from src.routes.auth_routes import auth_bp
     
     app.register_blueprint(team_bp, url_prefix='/api')
     app.register_blueprint(stats_bp, url_prefix='/api')
+    app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
     with app.app_context():
         db.create_all()
