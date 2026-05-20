@@ -1,0 +1,193 @@
+.dashboard-container {
+  min-height: 100vh;
+  background-color: #87CEEB;
+  padding: 1rem;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-card {
+  width: 100%;
+  max-width: 64rem;
+  background-color: white;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header {
+  padding: 2rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-subtitle {
+  font-size: 0.875rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.back-link {
+  color: #3b82f6;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.nav-buttons {
+  padding: 1.25rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.nav-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background-color: #f3f4f6;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #e5e7eb;
+}
+
+.nav-btn.active {
+  background-color: #d4e157;
+  color: black;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.table-section {
+  padding: 2rem;
+}
+
+.stage-title {
+  font-size: 1.125rem;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.standings-table {
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: left;
+  white-space: nowrap;
+  border-collapse: collapse;
+}
+
+.standings-table thead {
+  font-size: 11px;
+  color: white;
+  text-transform: uppercase;
+  background-color: #2b394f;
+}
+
+.standings-table th {
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.standings-table th:nth-child(1),
+.standings-table th:nth-child(2) {
+  text-align: left;
+}
+
+.standings-table tbody {
+  font-size: 0.75rem;
+}
+
+.category-row {
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 700;
+  color: #374151;
+}
+
+.category-row td {
+  padding: 0.75rem 1rem;
+}
+
+.team-row {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.2s;
+}
+
+.team-row:hover {
+  background-color: #f9fafb;
+}
+
+.team-row td {
+  padding: 0.75rem 1rem;
+  text-align: center;
+  color: #4b5563;
+}
+
+.team-row td:nth-child(1) {
+  text-align: left;
+}
+
+.team-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: left !important;
+}
+
+.team-logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
+.team-logo-placeholder {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #e5e7eb;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #6b7280;
+}
+
+.team-name {
+  color: #0056b3;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.points-cell {
+  font-weight: 700;
+  color: #374151;
+}
+
+.empty-row td {
+  padding: 2rem 1rem;
+  text-align: center;
+  color: #6b7280;
+}
